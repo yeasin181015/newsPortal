@@ -6,11 +6,18 @@
 .navbar > div {
   display: flex;
 }
+a {
+  cursor: pointer;
+}
 .category > a {
   color: darkgray;
 }
 @media only screen and (max-width: 600px) {
   .category {
+    align-items: center;
     flex-direction: column;
+  }
+  .category > div {
+    padding: 2px;
   }
 }
