@@ -1,0 +1,16 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1%;
+}
+.navbar > div {
+  display: flex;
+}
+.category > a {
+  color: darkgray;
+}
+@media only screen and (max-width: 600px) {
+  .category {
+    flex-direction: column;
+  }
+}
