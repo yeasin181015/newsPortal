@@ -43,18 +43,23 @@ function getData(data) {
     console.log(info);
     const newNewsContainer = document.createElement("div");
     newNewsContainer.innerHTML = `
-  <div class="card"> 
-  <img class="" src="${info.image_url}" alt="Card image cap" style="height:25%; width:25%" />
+  <div class="card d-flex flex-column justify-content-center align-items-center pt-3 flex-lg-row"> 
+  <img class="img-fluid w-25" src="${info.image_url}" alt="Card image cap" />
     <div class="card-body">
-      <h5 class="card-title">${info.author.name}</h5>
+      <h5 class="card-title">${info.title}</h5>
       <p class="card-text">
-        This is a wider card with supporting text below as a natural
-        lead-in to additional content. This content is a little bit
-        longer.
+        ${info.details.slice(0, 300)}...
       </p>
-      <p class="card-text">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </p>
+      <div class="d-flex flex-row justify-content-between">
+        <div>
+        <div>
+        <img src=${info.author.img} class="rounded-circle" width=50 height=50/>
+        </div>
+        <div></div>
+        </div>
+        <div>asd</div>
+        <div>asd</div>
+      </div>
     </div>
   </div>`;
     newsContainer.appendChild(newNewsContainer);
