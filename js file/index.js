@@ -32,11 +32,18 @@ function findCategoryInfo(categoryInfoURL) {
     .then((data) => getData(data));
 }
 function getData(data) {
-  var indexString = data.data[0].category_id.slice(1, 2);
-  var indexNumber = parseInt(indexString);
-  document.getElementById("numberOfItems").innerText = `${
-    data.data.length
-  } items found for category ${categoryName[indexNumber - 1]}`;
+  document.getElementById("spinnerDiv").classList.remove("d-none");
+  if (data.data.length == 0) {
+    document.getElementById("numberOfItems").innerText =
+      "0 items found for category Culture";
+  } else {
+    var indexString = data.data[0].category_id.slice(1, 2);
+    var indexNumber = parseInt(indexString);
+    document.getElementById("numberOfItems").innerText = `${
+      data.data.length
+    } items found for category ${categoryName[indexNumber - 1]}`;
+  }
+
   const newsContainer = document.getElementById("card-group");
   newsContainer.innerText = "";
   data.data.forEach((info) => {
@@ -75,6 +82,7 @@ function getData(data) {
   </div>`;
     newsContainer.appendChild(newNewsContainer);
   });
+  document.getElementById("spinnerDiv").classList.add("d-none");
 }
 
 function getNewsDetails(id) {
