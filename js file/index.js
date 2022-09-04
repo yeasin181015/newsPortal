@@ -44,7 +44,7 @@ function getData(data) {
     document.getElementById("numberOfItems").innerText = `${
       data.data.length
     } items found for category ${categoryName[indexNumber - 1]}`;
-
+    console.log(typeof data.data[0]);
     data.data.forEach((info) => {
       //console.log(info._id);
       const newNewsContainer = document.createElement("div");
