@@ -32,6 +32,8 @@ function findCategoryInfo(categoryInfoURL) {
     .then((data) => getData(data));
 }
 function getData(data) {
+  const newsContainer = document.getElementById("card-group");
+  newsContainer.innerText = "";
   document.getElementById("spinnerDiv").classList.remove("d-none");
   if (data.data.length == 0) {
     document.getElementById("numberOfItems").innerText =
@@ -42,14 +44,11 @@ function getData(data) {
     document.getElementById("numberOfItems").innerText = `${
       data.data.length
     } items found for category ${categoryName[indexNumber - 1]}`;
-  }
 
-  const newsContainer = document.getElementById("card-group");
-  newsContainer.innerText = "";
-  data.data.forEach((info) => {
-    //console.log(info._id);
-    const newNewsContainer = document.createElement("div");
-    newNewsContainer.innerHTML = `
+    data.data.forEach((info) => {
+      //console.log(info._id);
+      const newNewsContainer = document.createElement("div");
+      newNewsContainer.innerHTML = `
   <div class="card d-flex flex-column justify-content-center align-items-center pt-3 flex-lg-row"> 
   <img class="img-fluid w-25" src="${info.image_url}" alt="Card image cap"  />
     <div class="card-body">
@@ -80,8 +79,9 @@ function getData(data) {
       </div>
     </div>
   </div>`;
-    newsContainer.appendChild(newNewsContainer);
-  });
+      newsContainer.appendChild(newNewsContainer);
+    });
+  }
   document.getElementById("spinnerDiv").classList.add("d-none");
 }
 
