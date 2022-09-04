@@ -4,7 +4,8 @@ function loadCategories() {
     "https://openapi.programming-hero.com/api/news/categories";
   fetch(categoryUrl)
     .then((res) => res.json())
-    .then((data) => storeCategories(data.data.news_category));
+    .then((data) => storeCategories(data.data.news_category))
+    .catch((error) => console.log(error));
 }
 loadCategories();
 function storeCategories(categories) {
@@ -29,7 +30,8 @@ function showCategory(clickedCategoryName) {
 function findCategoryInfo(categoryInfoURL) {
   fetch(categoryInfoURL)
     .then((res) => res.json())
-    .then((data) => getData(data));
+    .then((data) => getData(data))
+    .catch((error) => console.log(error));
 }
 function getData(data) {
   const newsContainer = document.getElementById("card-group");
@@ -90,7 +92,8 @@ function getNewsDetails(id) {
   console.log(newsURL);
   fetch(newsURL)
     .then((res) => res.json())
-    .then((data) => getModalBody(data));
+    .then((data) => getModalBody(data))
+    .catch((error) => console.log(error));
 }
 function getModalBody(data) {
   document.getElementById("newsModalBody").innerText = data.data[0].details;
