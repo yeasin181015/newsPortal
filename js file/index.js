@@ -32,14 +32,21 @@ function findCategoryInfo(categoryInfoURL) {
     .then((data) => getData(data));
 }
 function getData(data) {
+  //console.log(data.data[0].author.name);
+  //   data.data.forEach((c) => {
+  //     console.log(c.author.name);
+  //   });
+
   const newsContainer = document.getElementById("card-group");
-  console.log(newsContainer);
-  const newNewsConatainer = document.createElement("div");
-  newNewsConatainer.innerHTML = `
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap" />
+  newsContainer.innerText = "";
+  data.data.forEach((info) => {
+    console.log(info);
+    const newNewsContainer = document.createElement("div");
+    newNewsContainer.innerHTML = `
+  <div class="card"> 
+  <img class="" src="${info.image_url}" alt="Card image cap" style="height:25%; width:25%" />
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
+      <h5 class="card-title">${info.author.name}</h5>
       <p class="card-text">
         This is a wider card with supporting text below as a natural
         lead-in to additional content. This content is a little bit
@@ -50,5 +57,6 @@ function getData(data) {
       </p>
     </div>
   </div>`;
-  newsContainer.appendChild(newNewsConatainer);
+    newsContainer.appendChild(newNewsContainer);
+  });
 }
