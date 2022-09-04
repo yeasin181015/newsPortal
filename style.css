@@ -12,6 +12,10 @@ a {
 .category > a {
   color: darkgray;
 }
+.card {
+  margin-bottom: 10px !important;
+}
+
 @media only screen and (max-width: 600px) {
   .category {
     align-items: center;
